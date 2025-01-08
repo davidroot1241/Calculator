@@ -1,1 +1,1 @@
-You can compile and run this program using a Java IDE or a terminal with a Java compiler. It takes user input for two numbers and an operator, then calculates and displays the result based on the chosen operation.
+You can copy and paste this into a .html file and open it in your browser to run the calculator.
