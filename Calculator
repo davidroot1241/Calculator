@@ -1,50 +1,57 @@
-import java.util.Scanner;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Program</title>
+</head>
+<body>
+    <h1>Welcome to the Calculator Program!</h1>
+    
+    <label for="num1">Enter the first number:</label>
+    <input type="number" id="num1" step="any"><br><br>
 
-public class Calculator {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    <label for="num2">Enter the second number:</label>
+    <input type="number" id="num2" step="any"><br><br>
 
-        System.out.println("Welcome to the Calculator Program!");
-        System.out.println("Enter the first number: ");
-        double num1 = scanner.nextDouble();
+    <label for="operation">Choose an operation (+, -, *, /):</label>
+    <input type="text" id="operation" maxlength="1"><br><br>
 
-        System.out.println("Enter the second number: ");
-        double num2 = scanner.nextDouble();
+    <button onclick="calculate()">Calculate</button>
 
-        System.out.println("Choose an operation (+, -, *, /): ");
-        char operation = scanner.next().charAt(0);
+    <h2 id="result">Result: </h2>
 
-        double result;
+    <script>
+        function calculate() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operation = document.getElementById('operation').value;
 
-        switch (operation) {
-            case '+':
-                result = num1 + num2;
-                System.out.println("Result: " + result);
-                break;
+            let result;
 
-            case '-':
-                result = num1 - num2;
-                System.out.println("Result: " + result);
-                break;
+            switch (operation) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 !== 0) {
+                        result = num1 / num2;
+                    } else {
+                        result = "Error: Division by zero is not allowed.";
+                    }
+                    break;
+                default:
+                    result = "Error: Invalid operation.";
+            }
 
-            case '*':
-                result = num1 * num2;
-                System.out.println("Result: " + result);
-                break;
-
-            case '/':
-                if (num2 != 0) {
-                    result = num1 / num2;
-                    System.out.println("Result: " + result);
-                } else {
-                    System.out.println("Error: Division by zero is not allowed.");
-                }
-                break;
-
-            default:
-                System.out.println("Error: Invalid operation.");
+            document.getElementById('result').innerText = "Result: " + result;
         }
-
-        scanner.close();
-    }
-}
+    </script>
+</body>
+</html>
